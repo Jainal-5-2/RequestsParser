@@ -5,6 +5,7 @@ class RequestsParser:
         self.host = None 
         self.path = None
         self.fileContent = None
+        self.method = None
 
     def parse(self,filePath):
         with open(filePath,'r') as f:
@@ -16,6 +17,7 @@ class RequestsParser:
         
         self.host = self.headers['Host']
         self.path = lines[0].split()[1]
+        self.method = lines[0].split()[0]
     
     def prettyPrint(self):
         print(self.fileContent[0])
@@ -32,6 +34,7 @@ class RequestsParser:
 
         print('\nHost: ' + self.host)
         print('Path: ' + self.path)
+        print('Method:' + self.method)
 
     def setData(self,lines):
         self.data = {}
